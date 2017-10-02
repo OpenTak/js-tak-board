@@ -95,6 +95,14 @@ export default class Board {
 
       const targetTop = this.top(x1, y1);
 
+      if (ptn.isPlacement()) {
+        if (targetTop.length) {
+          this.errors.push('Cannot place on non-empty square.');
+        }
+
+        return true;
+      }
+
       // Can't do anything to capstones
       if (targetTop[0] === 'C') {
         this.errors.push('Cannot move on top of Capstone.');
@@ -108,7 +116,7 @@ export default class Board {
           return true;
         }
 
-        if (i !== moveSet.length) {
+        if (i !== moveSet.length - 1) {
           this.errors.push('Cannot flatten wall unless capstone is the last distributed piece.');
           return true;
         }

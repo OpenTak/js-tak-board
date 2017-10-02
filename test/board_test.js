@@ -168,6 +168,20 @@ describe('Board', () => {
       expect(board.errors).to.include('Move is out of bounds.');
     });
 
+    it('cannot place on a non-empty square', () => {
+      const board = new Board(3);
+      const ptn   = Ptn.parse('a1');
+
+      board.state = [
+        [['w'], [], []],
+        [[   ], [], []],
+        [[   ], [], []]
+      ];
+
+      expect(board.isValid(ptn, 'w')).to.equal(false);
+      expect(board.errors).to.include('Cannot place on non-empty square.');
+    });
+
     it('cannot affect capstones', () => {
       const board = new Board(3);
       const ptn   = Ptn.parse('a1>');
