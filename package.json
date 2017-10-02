@@ -1,0 +1,43 @@
+{
+  "name": "tak-board",
+  "version": "0.0.0",
+  "description": "A simple tak board",
+  "main": "./distribution/board.js",
+  "entry": "./source/board.js",
+  "author": "baweaver <brandon_weaver@baweaver.com>",
+  "license": "MIT",
+  "files": [
+    "source",
+    "distribution"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OpenTak/tak-board"
+  },
+  "keywords": [
+    "array",
+    "multi-dimmensional"
+  ],
+  "scripts": {
+    "test": "NODE_ENV=test ./node_modules/.bin/mocha --recursive --reporter spec --timeout 3000 --compilers js:babel-core/register --require babel-register",
+    "test-watch": "NODE_ENV=test ./node_modules/.bin/mocha --recursive --watch --reporter spec --timeout 3000 --compilers js:babel-core/register --require babel-register",
+    "build": "./node_modules/.bin/rollup -c",
+    "prepublish": "npm run build"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-runtime": "^6.26.0",
+    "chai": "^4.1.0",
+    "mocha": "^3.4.2",
+    "rollup": "^0.41.4",
+    "rollup-plugin-babel": "^3.0.2"
+  },
+  "dependencies": {
+    "marray": "^1.1.0",
+    "ptn": "^0.2.0"
+  }
+}
